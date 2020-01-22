@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!-- Basic HTML sketch for settling Processing.js based on Khan Academy template:
+https://www.khanacademy.org/computer-programming/program/5157014494511104/embedded?embed=yes&author=no&editor=yes&buttons=yes&settings=%7B%7D -->
+<html>
+ <head>
+    <meta charset="UTF-8">
+    <title>Processing.js: examples of my projects based on Khan Academy's course: Intro to JS - Drawing & Animation</title>
+    <meta name="description" content="Processing.js animations">
+    <meta name="author" content="Joanna Staniszewska">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Seymour+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
+</head>
+ <body>
+    <h1 id="title">Processing.js: animations</h1>
+    <h2>Examples of my projects based on Khan Academy's course: Intro to JS - Drawing & Animation</h2>
+
+    <div class="mycanvas">
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas1"></canvas>
+      <canvas id="mycanvas2"></canvas>
+      <canvas id="mycanvas3"></canvas>
+      <canvas id="mycanvas4"></canvas>
+      <canvas id="mycanvas5"></canvas>
+      <canvas id="mycanvas6"></canvas>
+      <canvas id="mycanvas7"></canvas>
+      <canvas id="mycanvas8"></canvas>
+      <canvas id="mycanvas9"></canvas>
+      <a href="https://joannaewa.github.io/My_CV/">
+      <canvas id="mycanvas10"></canvas></a>
+    </div>
+ </body>
+
+ <!-- JavaScript -->
+ <!-- Include the processing.js library -->
+<script src="lib_processing.js"></script>
+ <script>
+     var sketchProc1 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        // Pinocchio animation
+        var faceX = 40;
+        var faceY = 240;
+        var faceW = 221;
+        var longNose = 167;
+        var f = createFont("cursive");
+
+        draw = function() {
+            background(32, 92, 42);
+            noStroke();
+            fill(222, 176, 106);
+            ellipse(faceX, faceY, faceW, 280); // face
+            rect(0, 370, 60, 40); // neck
+            triangle(longNose, 246, 131, 223, 115, 266); //nose
+            fill(240, 222, 19);
+            arc(46, 188, 200, 185, TWO_PI-PI/2, TWO_PI); //hair
+            arc(46, 188, 200, 185, PI, TWO_PI-PI/2);
+            arc(0, 188, 160, 130, 0, PI/2);
+            fill(128, 83, 36);
+            ellipse(111, 218, 23, 20); //eyes
+            fill(199, 44, 44);
+            ellipse(65, 280, 75, 75); // cheek
+            fill(219, 117, 70);
+            ellipse(141, 287, 25, 15); // mouth
+            longNose += 0.3; // nose will grow longer
+            textFont(f, 20);
+            text('"I do not tell lies!"', 200, 82);
+            text("Pinocchio", 203, 122);
+        };
+    }};
+
+    var sketchProc2 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        // falling stars in the city
+        var xPos = 1;
+        var yPos = 30;
+        var x2Pos = 0;
+        var y2Pos = 0;
+
+        draw = function() {
+            background(29, 40, 115); // dark sky
+            fill(242, 242, 237); //moon
+            ellipse(260, 29, 55, 55);
+
+            fill(255, 242, 0); // falling stars
+            ellipse(xPos, yPos - 50, 10, 10);
+            ellipse(xPos -200, yPos -30, 15, 15);
+            ellipse(x2Pos + 100, y2Pos +30, 10, 10);
+            ellipse(x2Pos -100, y2Pos, 20, 20);
+            ellipse(xPos -500, yPos -50, 10, 10);
+            ellipse(xPos -400, yPos -30, 5, 5);
+            ellipse(xPos -800, yPos -280, 5, 5);
+            ellipse(xPos -900, yPos -200, 5, 5);
+            ellipse(xPos % 400, yPos % 400, 5, 5);
+            ellipse(x2Pos % 400, y2Pos % 400, 7, 7);
+            ellipse(x2Pos % 400, y2Pos % 400, 11, 11);
+
+            xPos +=2; // moves stars
+            yPos -=-0.5;
+            x2Pos += 0.7;
+            y2Pos += 0.3;
+            ellipse(60, 55, 10, 10); // stars with fixed position
+            ellipse(360, 25, 15, 15);
+            ellipse(200, 65, 15, 15);
+            ellipse(100, 95, 5, 5);
+            fill(135, 111, 111);
+            rect(20, 190, 50, 210);  // first skyscraper
+            rect(100, 290, 50, 210); //second skyscraper
+            rect(260, 190, 50, 210); // third skyscraper
+
+            for (var x = 23; x < 68; x += 10){  // windows 1
+                fill(173, 173, 62);
+                    for(var y = 198; y < 382; y += 6){
+                        rect(x, y, 4, 4);
+                        }
+                }
+            for (var x = 103; x < 148; x += 10){  // windows 2
+                fill(189, 189, 76);
+                    for(var y = 295; y < 382; y += 6){
+                        rect(x, y, 4, 4);
+                        }
+                }
+            for (var x = 262; x < 308; x += 10){  // windows 2
+                fill(219, 219, 114);
+                    for(var y = 200; y < 382; y += 6){
+                        rect(x, y, 4, 4);
+                        }
+                }
+            };
+    }};
+
+    var sketchProc3 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        // Neverending rain created using %
+        var drop = function(circleX, circleY) {  // draws drops
+            noStroke();
+            fill(44, 44, 158);
+            triangle(circleX - 5, circleY, circleX + 5, circleY, circleX, circleY - 10);
+            ellipse(circleX, circleY, 10, 10);
+        };
+        var xPositions = [200, 100]; // arrays with drops positions
+        var yPositions = [0, 2];
+        var fo = createFont("monospace");
+        var message = "The Infinite Rain";
+        var mX = 30; // message position
+        var mY = 50;
+
+        draw = function() {
+            background(177, 235, 245);
+            noStroke();
+            fill(0, 200, 255);
+
+            for (var i = 0; i < 45; i++) { // loop creating ever returning drops with random positions
+                drop(xPositions[i], yPositions[i] % 400, 10, 10);
+                xPositions.push(random(1, 399));
+                yPositions.push(random(1, 399));
+                yPositions[i] += 4; // speed of drops
+            }
+            fill(179, 104, 179);
+            textFont(fo, 30);
+            for (var i = 0; i < message.length; i++) {  // animates text
+                text(message[i], mX + i * 20, (mY - 200 * (i + 5))  % 500);
+            }
+            mY += 2; // speed of letters
+            text(message, 40, 100); // fixed text
+        };
+    }};
+
+    var sketchProc4 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        // 4 squares (colors)
+        draw = function() {
+            fill(237, 234, 237);
+            rect(0, 0, 200, 200); // top left
+            rect(200, 0, 200, 200); // top right
+            rect(0, 200, 200, 200); // bottom left
+            rect(200, 200, 200, 200); // bottom right
+
+            if (mouseX < 200 && mouseY < 200) {
+                fill(33, 116, 232);
+                rect(0, 0, 200, 200); // top left
+            } else if (mouseX > 200 && mouseY < 200) {
+                fill(217, 32, 79);
+                rect(200, 0, 200, 200); // top right
+            } else if (mouseX<200 && mouseY>200) { //bottom left
+                fill(235, 235, 9);
+                rect(0, 200, 200, 200);
+            } else if (mouseX>200 && mouseY>200){ //bottom right
+                fill(63, 153, 55);
+                rect(200, 200, 200, 200);
+            } else if (mouseX === 200 || mouseY === 200 || mouseX < 3 || mouseX > 397 || mouseY <3 || mouseY>397) {
+                fill(158, 35, 35);
+                text("EDGE BALL", 165, 200);
+            }
+            fill(10, 10, 10);
+            ellipse(mouseX, mouseY, 30, 30);
+            fill(255, 255, 255);
+            ellipse(mouseX, mouseY, 10, 10);
+            fill(63, 153, 55);
+            ellipse(mouseX - 20, mouseY - 20, 10, 10); //top left
+            fill(235, 235, 9);
+            ellipse(mouseX + 20, mouseY - 20, 10, 10); // top right
+            fill(217, 32, 79);
+            ellipse(mouseX - 20, mouseY + 20, 10, 10); // bottom left
+            fill(33, 116, 232);
+            ellipse(mouseX + 20, mouseY + 20, 10, 10); //bottom right
+        };
+    }};
+
+    var sketchProc5 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        draw = function() {
+            stroke(1);
+            fill(mouseX, mouseY, 250);
+            ellipse(mouseX, mouseY, 40, 40); //draws circles,color and position depend on mouse position
+        };
+    }};
+
+    var sketchProc6 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        // Fish tank
+        // inspiration for gradient color solution: https://forum.processing.org/two/discussion/25811/colormode
+        var lightBlue = color(0, 250, 238);
+        var darkBlue = color(54, 38, 179);
+
+        var dw = 20;
+        var dh =  3;
+
+        noStroke();
+        for (var x = 0; x < width; x += dw){
+          for (var y = 0; y < height; y += dh) {
+            var loc = x + y * width;
+            var ratio = loc/(width*height);
+            var c = lerpColor(lightBlue, darkBlue, ratio);
+            fill(c);
+            rect(x, y, dw,dh);
+          }
+        };
+
+        var clickMessage = "CLICK";
+        var randomNumber = random(3, 20);
+        fill(255, 255, 255, 70);
+        textSize(30);
+        text(clickMessage, 160, 200);
+
+        var drawFish = function(centerX, centerY, bodyLength, bodyHeight) {
+            noStroke();
+            // body
+            ellipse(centerX, centerY, bodyLength, bodyHeight);
+            // tail
+            var tailWidth = bodyLength/4;
+            var tailHeight = bodyHeight/2;
+            triangle(centerX-bodyLength/2, centerY,
+                 centerX-bodyLength/2-tailWidth, centerY-tailHeight,
+                 centerX-bodyLength/2-tailWidth, centerY+tailHeight);
+            // eye
+            fill(33, 33, 33);
+            ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
+        };
+        fill(162, 0, 255);
+        drawFish(200, 100, 118, 74); // 2 initial fish
+        fill(20, 28, 184);
+        drawFish(100, 250, 60, 40);
+
+         mouseClicked = function() {
+            fill(mouseX, 0, mouseY); // color depends on new fish's location
+            drawFish(mouseX, mouseY, randomNumber, randomNumber);
+            randomNumber +=randomNumber; // every click = one more fish, randomly bigger
+        };
+    }};
+
+    var sketchProc7 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        // characters along a curve based on tutorial: https://processing.org/tutorials/text/
+        var dotMessage = "Click to paint rainbow dots";
+        var r = 100; // The radius of a circle
+        var fo = createFont("Georgia");
+        textFont(fo, 40);
+        textAlign(CENTER);
+        smooth();
+
+        var drawDotMessage = function() {
+          background(255);
+  // Start in the center and draw the circle
+          translate(width / 2, height / 2);
+          fill(100, 100, 100);
+          stroke(0);
+          ellipse(0, 0, r*2, r*2);
+  // Keep track of our position along the curve
+          var arclength = 0;
+  // For every box
+          for (var i = 0; i < dotMessage.length; i++) {
+    // Instead of a constant width, we check the width of each character.
+            var currentChar = dotMessage.charAt(i);
+            var w = textWidth(currentChar);
+    // Each box is centered so we move half the width
+            arclength += w/2;
+    // Angle in radians is the arclength divided by the radius
+    // Starting on the left side of the circle by adding PI
+            var theta = PI + arclength / r;
+            pushMatrix();
+    // Polar to cartesian coordinate conversion
+            translate(r*cos(theta), r*sin(theta));
+    // Rotate the box
+            rotate(theta+PI/2); // rotation is offset by 90 degrees
+    // Display the character
+            fill(0);
+            text(currentChar,0,0);
+            popMatrix();
+    // Move halfway again
+            arclength += w/2;
+          };
+        };
+        drawDotMessage();
+        translate(- (width / 2), - (height / 2)); // back to normal
+        drawCircle = function() {
+          noStroke();
+          fill(mouseX, mouseY, 30);
+          ellipse(mouseX, mouseY, 20, 20);
+        };
+        mouseClicked = function() {
+          drawCircle();
+        };
+    }};
+
+    var sketchProc8 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        var muzzleX = 200;
+        var muzzleY = 200;
+        var muzzleW = 250;
+        var muzzleH = 250;
+        var noseW = muzzleW/4;
+        var earSize = 110;
+        var eyesSize = 30;
+        var earY = muzzleY-80;
+        var changeEar = 1;
+
+        draw = function() {
+            background(217, 235, 235);
+            fill(51, 10, 10);
+            ellipse(muzzleX - 110, earY, earSize, earSize);// ear 1
+            ellipse(muzzleX + 110, earY, earSize, earSize);// ear 2
+            fill(196, 168, 168);
+            ellipse(muzzleX-110, earY, earSize/2, earSize/2);// ear 1 inside
+            ellipse(muzzleX + 110, earY, earSize/2, earSize/2);//ear 2 inside
+            fill(128, 101, 21);
+            ellipse(muzzleX, muzzleY, muzzleW, 250); // muzzle
+            fill(15, 14, 14);
+            ellipse(140, 180, eyesSize, eyesSize); //eyes
+            ellipse(260, 180, eyesSize, eyesSize);
+            fill(250, 20, 31);
+            ellipse(200, muzzleY+ 40, 40, 70);//tongue
+            fill(23, 21, 21);
+            ellipse(muzzleX, muzzleY+20, noseW, 50); // nose
+
+            if (earSize > 650) { // prevents ears from getting to big or to small
+                changeEar =-1;
+            }
+            if (earSize < 60) {
+                changeEar = 1;
+            }
+            earSize = earSize + changeEar;
+        };
+    }};
+
+    var sketchProc9 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        fill(255, 0, 255);
+        draw = function() {
+            var posX = mouseX;
+            var posY = mouseY;
+            var label = "Your coordinates:  " + posX + " , " + posY; // text close to the mouse
+            background(6, 10, 79);
+            ellipse(mouseX, mouseY, 12, 12); // circle moving according to mouse position
+            text(label, mouseX + 5, mouseY);
+        };
+}};
+
+    var sketchProc10 = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+        // ProgramCodeGoesHere
+        draw = function() {
+            background(219, 255, 255);
+            fill(120, 15, 43);
+            triangle(200, 28, 350, 150, 50, 150); // roof
+
+            for (var x = 60; x < 320; x+=25) {  // striped walls
+                if (x % 2) {
+                    fill(245, 245, 245);
+                    rect(x, 150, 330-x, 207);
+                } else {
+                    fill(207, 203, 180);
+                    rect(x, 150, 330-x, 207);
+                }
+            }
+            for (var x=80;x<320; x+=50){  // windows
+                fill(250, 250, 13);
+                rect(x, 170, 35, 35);
+                for(var y=170; y<250; y+= 50){
+                    rect(x, y, 35, 35);
+                }
+            }
+            fill(120, 80, 19);
+            rect(180, 280, 40, 77); //door
+
+            fill(186, 185, 180);
+            var messageHo = "HO";
+            var messageMe = "ME";
+            textSize(60);
+            text(messageHo, 45, 70);
+            text(messageMe, 267, 70);
+        };
+    }};
+
+    // Get the canvas that Processing-js will use
+    var canvas1 = document.getElementById("mycanvas1");
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas1, sketchProc1);
+
+    var canvas2 = document.getElementById("mycanvas2");
+    var processingInstance2 = new Processing(canvas2, sketchProc2);
+
+    var canvas3 = document.getElementById("mycanvas3");
+    var processingInstance3 = new Processing(canvas3, sketchProc3);
+
+    var canvas4 = document.getElementById("mycanvas4");
+    var processingInstance4 = new Processing(canvas4, sketchProc4);
+
+    var canvas5 = document.getElementById("mycanvas5");
+    var processingInstance5 = new Processing(canvas5, sketchProc5);
+
+    var canvas6 = document.getElementById("mycanvas6");
+    var processingInstance6 = new Processing(canvas6, sketchProc6);
+
+    var canvas7 = document.getElementById("mycanvas7");
+    var processingInstance7 = new Processing(canvas7, sketchProc7);
+
+    var canvas6 = document.getElementById("mycanvas6");
+    var processingInstance6 = new Processing(canvas6, sketchProc6);
+
+    var canvas7 = document.getElementById("mycanvas7");
+    var processingInstance7 = new Processing(canvas7, sketchProc7);
+
+    var canvas8 = document.getElementById("mycanvas8");
+    var processingInstance8 = new Processing(canvas8, sketchProc8);
+
+    var canvas9 = document.getElementById("mycanvas9");
+    var processingInstance9 = new Processing(canvas9, sketchProc9);
+
+    var canvas10 = document.getElementById("mycanvas10");
+    var processingInstance10 = new Processing(canvas10, sketchProc10);
+
+ </script>
+
+</html>
